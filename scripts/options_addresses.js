@@ -1,4 +1,4 @@
-/* global chrome, enterAnimation, leaveAnimation, version, getText, explorerUrl, capitalize, capitalizeInputValue, longToNormalAmount, riseRegex, addressAmounts, addressDelegates */
+/* global chrome, enterAnimation, leaveAnimation, version, getText, explorerUrl, capitalize, capitalizeInputValue, longToNormalAmount, riseRegex */
 let currentaddress1
 let currentaddress2
 let currentaddress3
