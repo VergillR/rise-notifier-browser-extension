@@ -5,6 +5,13 @@ It checks up to 5 RISE addresses at the same time and it currently supports 7 la
 
 Usage is straightforward: simply give 1 to 5 RISE addresses you want to follow.
 
+### Summary
+* Receive notifications for up to 5 RISE addresses in 7 different languages
+* Near real-time notifications (<90 seconds) for incoming and outgoing transactions for each given RISE address
+* Shows for each address the current amount of RISE and the name of the delegate (if the account holder of the address has voted)
+* Shows current prices (RISE/USD and RISE/BTC) which are updated every 10 minutes
+* On startup, shows notifications for any missed transactions when the browser was not running
+
 ### Installation
 Normally, you can find and install extensions from the [Google Web Store](https://chrome.google.com/webstore/category/extensions). 
 Some browsers, like Opera, may have their own store for extensions.
@@ -16,8 +23,9 @@ Alternatively, you can get the unpackaged extension by downloading this repo or 
 And then adding the extension manually to the browser:
 1. open Google Chrome / Opera / Vivaldi / any Chromium-based browser
 2. enter "about://extensions" in the URL bar
-3. click "Load Unpacked"
-4. select the extension's directory and click OK.
+3. enable "Developer Mode"
+4. click "Load Unpacked"
+5. select the extension's directory and click OK.
 
 ### Adding extra languages
 To add an extra language:
@@ -40,7 +48,6 @@ To add an extra language:
     "momentformat": {
       "message": "D MMMM YYYY, HH:mm:ss"
     }
-6. all done!
 
 ### Notes
 This extension only works for Google Chrome and other Chromium-based browsers.
