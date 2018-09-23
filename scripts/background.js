@@ -2,11 +2,28 @@
 /** RISE Notifications Web Extension v.1.0 created for RISE by Vergill Lemmert, August 2018 */
 // Web Extensions are not allowed to poll faster than ~60 seconds, so source should not have a polltime below 60 seconds, but preferably 90 seconds or more
 let source
-let startup = true
+let startup
 let lastMatchIds = []
 
-chrome.runtime.onStartup.addListener(() => {
-  loadScript('globals', () => {
+/**
+ * Load an outside script (holding the global variables and functions) into the current file
+ * @param {string} scriptName The script (with global functions) that needs to be imported
+ * @param {function} callback Function that is called after the script was imported
+ */
+function loadScript (scriptName, callback) {
+  const script = document.createElement('script')
+  script.src = chrome.extension.getURL(`./scripts/${scriptName}.js`)
+  script.addEventListener('load', callback, false)
+  document.head.appendChild(script)
+}
+
+/**
+ * Initialize the extension; it imports the script with global functions and then starts the alarm
+ * @param {string} scriptName The script (with global functions that need to be imported)
+ */
+function initLoadScript (scriptName = 'globals') {
+  startup = true
+  loadScript(scriptName, () => {
     chrome.storage.local.get([ 'useSource', 'source3', 'alertPriceChangeOnStartup', 'checkOfflineMessages', 'watchmessages', 'lastseenblockheight' ], (item) => {
       try {
         source = (item.useSource.toString() === '3') ? item.source3 : (item.useSource.toString() === '2' ? sourceUrl2 : sourceUrl)
@@ -31,6 +48,10 @@ chrome.runtime.onStartup.addListener(() => {
       }, 100000)
     })
   })
+}
+
+chrome.runtime.onStartup.addListener(() => {
+  initLoadScript('globals')
 })
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -72,21 +93,9 @@ chrome.runtime.onInstalled.addListener(() => {
     if (!item.source3) initObject.source3 = ''
     if (!item.useSource) initObject.useSource = '1'
 
-    chrome.storage.local.set(initObject, () => { console.log('Initialization success') })
+    chrome.storage.local.set(initObject, () => { console.log('Initialization success'); if (!startup) initLoadScript('globals') })
   })
 })
-
-/**
- * Load an outside script (holding the global variables and functions) into the current file
- * @param {string} scriptName The script (with global functions) that needs to be imported
- * @param {function} callback Function that is called after the script was imported
- */
-function loadScript (scriptName, callback) {
-  const script = document.createElement('script')
-  script.src = chrome.extension.getURL(`./scripts/${scriptName}.js`)
-  script.addEventListener('load', callback, false)
-  document.head.appendChild(script)
-}
 
 /**
  * Send a request for information to the target site
