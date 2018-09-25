@@ -25,9 +25,9 @@ function initLoadScript (scriptName = 'globals') {
   startup = true
   loadScript(scriptName, () => {
     chrome.storage.local.get([ 'useSource', 'source3', 'alertPriceChangeOnStartup', 'checkOfflineMessages', 'watchmessages', 'lastseenblockheight' ], (item) => {
-      try {
+      if (item.useSource) {
         source = (item.useSource.toString() === '3') ? item.source3 : (item.useSource.toString() === '2' ? sourceUrl2 : sourceUrl)
-      } catch (e) {
+      } else {
         source = sourceUrl
       }
       if (!source.endsWith('/')) source += '/'
@@ -50,9 +50,7 @@ function initLoadScript (scriptName = 'globals') {
   })
 }
 
-chrome.runtime.onStartup.addListener(() => {
-  initLoadScript('globals')
-})
+initLoadScript('globals')
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.local.get(['transactions', 'messages', 'watchmessages', 'address1', 'address2', 'address3', 'address4', 'address5', 'address1amount', 'address2amount', 'address3amount', 'address4amount', 'address5amount', 'address1delegate', 'address2delegate', 'address3delegate', 'address4delegate', 'address5delegate', 'lastseenblockheight', 'riseUsd', 'riseBtc', 'source3', 'useSource', 'checkOfflineMessages', 'alertPriceChangeOnStartup'], (item) => {
