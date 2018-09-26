@@ -46,10 +46,10 @@ function initLoadScript (scriptName = 'globals') {
           getLastBlockheightAtStartup(item.lastseenblockheight)
         }
         chrome.alarms.create('watcher', {periodInMinutes: 1})
-      }, 15000)
+      }, 10000)
       setTimeout(() => {
         startup = null
-      }, 100000)
+      }, 15000)
     })
   })
 }
@@ -351,7 +351,7 @@ chrome.alarms.onAlarm.addListener(() => {
   // 1) get json-object for latest transactions on source website
   // 2) filter it regarding rise-addresses to watch
   // 3) if no match is found, do nothing; if at least 1 match is found, then create notification, save to the storage in the latest transfers-object (if there are already more than 10 entries, remove the oldest entry)
-  if (!source) return
+  if (!source || startup) return
   const url = source + 'rise_latest_transactions/'
   xhrCall(url,
     () => {
