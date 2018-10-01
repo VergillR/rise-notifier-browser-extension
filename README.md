@@ -1,15 +1,15 @@
+![alt text](https://github.com/VergillR/rise-notifier-browser-extension/blob/master/icons/riseicon_128.png "RISE logo extension")
 # RISE notifications for Google Chrome and Chromium-based browsers
-
 This is a browser extension for receiving RISE notifications for Google Chrome and other Chromium-based browsers, such as Opera and Vivaldi.
-It checks up to 5 RISE addresses at the same time and it currently supports 7 languages (English, German, French, Spanish, Portuguese, Dutch and Russian).
+It checks up to 5 RISE addresses simultaneously; You do not have to be the owner of the given addresses, so you can give any address you like. The extension currently supports 7 languages (English, German, French, Spanish, Portuguese, Dutch and Russian).
 
-Usage is straightforward: simply give 1 to 5 RISE addresses you want to follow.
+Usage is straightforward: simply give 1 to 5 RISE addresses you want to follow. Notifications about transactions from or to a followed RISE address will be displayed within 60 seconds.
 
 ### Summary
 * Receive notifications for up to 5 RISE addresses in 7 different languages
-* Near real-time notifications (<90 seconds) for incoming and outgoing transactions for each given RISE address
-* Shows for each address the current amount of RISE and the name of the delegate (if the account holder of the address has voted)
-* Shows current prices (RISE/USD and RISE/BTC) which are updated every 10 minutes
+* Near real-time notifications (<60 seconds) for incoming and outgoing transactions for each given RISE address
+* Shows basic public information for each address, such as the current amount of RISE and the name of the delegate (if the account holder of the address has voted)
+* Shows current prices (RISE/USD and RISE/BTC)
 * On startup, shows notifications for any missed transactions when the browser was not running
 
 ### Installation
@@ -22,10 +22,12 @@ Alternatively, you can get the unpackaged extension by downloading this repo or 
 
 And then adding the extension manually to the browser:
 1. open Google Chrome / Opera / Vivaldi / any Chromium-based browser
-2. enter "about://extensions" in the URL bar
+2. enter *chrome://extensions* in the URL bar (replace *chrome* with the name of your browser if you do not use Chrome, like *opera* or *vivaldi*)
 3. enable "Developer Mode"
 4. click "Load Unpacked"
-5. select the extension's directory and click OK.
+5. select the extension's directory and click OK
+6. disable "Developer Mode" (keep Developer Mode on if you want to debug the extension)
+
 
 ### Adding extra languages
 To add an extra language:
@@ -48,6 +50,15 @@ To add an extra language:
     "momentformat": {
       "message": "D MMMM YYYY, HH:mm:ss"
     }
+
+
+### Data source
+The extension gets its information from a server that uses the RISE API to communicate with the RISE network. Click [here](https://github.com/VergillR/rise-data-api) to check the code or to set up your own data source that the extension can use. You can choose your data source in the extension's *Options* screen.
+
+
+### Privacy
+Privacy is important. This extension uses the local storage on the device it is installed on, solely for the purposes for displaying necessary, public information. It never collects or asks for personal data (e.g. secret passphrase, login information or clipboard data). Stored data is not tracked, recorded, collected, shared or sold to third parties. Only use trusted data sources to ensure your privacy. At any time, you can delete all data stored on the device in the extension's *Options*. The code is open source (MIT license) so it can be fully reviewed.
+
 
 ### Notes
 This extension only works for Google Chrome and other Chromium-based browsers.
