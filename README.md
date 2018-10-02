@@ -21,8 +21,8 @@ Alternatively, you can get the unpackaged extension by downloading this repo or 
 `git clone https://github.com/VergillR/rise-notifier-browser-extension`
 
 And then adding the extension manually to the browser:
-1. open Google Chrome / Opera / Vivaldi / any Chromium-based browser
-2. enter *chrome://extensions* in the URL bar (replace *chrome* with the name of your browser if you do not use Chrome, like *opera* or *vivaldi*)
+1. open Google Chrome / Chromium / Opera / Vivaldi / Brave / any Chromium-based browser
+2. enter *chrome://extensions* in the URL bar (replace *chrome* with the name of your browser if you do not use Chrome or Chromium, like *opera* or *vivaldi*)
 3. enable "Developer Mode"
 4. click "Load Unpacked"
 5. select the extension's directory and click OK
@@ -63,6 +63,6 @@ Privacy is important. This extension uses the local storage on the device it is 
 ### Notes
 This extension only works for Google Chrome and other Chromium-based browsers.
 
-For Firefox: [click here](https://github.com/VergillR/rise-notifier-browser-extension-firefox)
+For Mozilla Firefox: [click here](https://github.com/VergillR/rise-notifier-browser-extension-firefox)
 
 For Microsoft Edge: [click here](https://github.com/VergillR/rise-notifier-browser-extension-edge)
