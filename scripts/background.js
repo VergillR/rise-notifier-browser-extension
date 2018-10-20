@@ -465,9 +465,11 @@ chrome.alarms.onAlarm.addListener(() => {
             amount = posAmount - negAmount
           } else if (watchmessages === '2') {
             results = resp.filter(c => addresses.indexOf(c.receiverId) !== -1 && addresses.indexOf(c.senderId) === -1 && lastMatchIds.indexOf(c.id) === -1)
+            posResults = results
             amount = results.reduce((acc, value) => { acc += value.amount; return acc }, 0)
           } else if (watchmessages === '3') {
             results = resp.filter(c => addresses.indexOf(c.senderId) !== -1 && lastMatchIds.indexOf(c.id) === -1)
+            negResults = results
             amount = results.reduce((acc, value) => { acc -= value.amount; return acc }, 0)
           }
           lastMatchIds = results.map(c => c.id)
