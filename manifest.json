@@ -1,9 +1,10 @@
 {
   "name": "__MSG_extName__",
   "description": "__MSG_extDesc__",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "manifest_version": 2,
-  "permissions": ["notifications",
+  "permissions": [
+    "notifications",
     "alarms",
     "storage",
     "unlimitedStorage",
